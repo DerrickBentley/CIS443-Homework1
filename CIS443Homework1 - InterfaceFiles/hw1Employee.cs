@@ -25,14 +25,38 @@ namespace CIS443Homework1___InterfaceFiles
         /// Checks all the properties to determine if they are valid
         /// </summary>
         /// <returns></returns>
-        public bool isValid()
+        public List<string> isValid()
         {
-            return isValidName(firstName) && isValidName(lastName)
-                && isValidHoursWorked(hoursWorked)
-                && isValidPayRate(payRate) && isValidYTD(earnedYTD)
-                && isValidMarriageStatus(marriageStatus)
-                && isValidAllowances(allowances);
-
+            List<string> results = new List<string>();
+            if (!isValidName(firstName))
+            {
+                results.Add("First name must not be blank or spaces");
+            }
+            if (!isValidName(lastName))
+            {
+                results.Add("Last name must not be blank or spaces");
+            }
+            if (!isValidHoursWorked(hoursWorked))
+            {
+                results.Add("Hours Worked must be between 0 and 60");
+            }
+            if (!isValidPayRate(payRate))
+            {
+                results.Add("Pay rate must be greater than 0");
+            }
+            if (!isValidYTD(earnedYTD))
+            {
+                results.Add("Earned YTD must be greater or equal to 0");
+            }
+            if (!isValidMarriageStatus(marriageStatus))
+            {
+                results.Add("Marriage Status must be a 1 or a 0");
+            }
+            if (!isValidAllowances(allowances))
+            {
+                results.Add("Allowances must be between 0 and 20");
+            }
+            return results;
         }
         /// <summary>
         /// Allowances must be greater or equal to 0

@@ -125,13 +125,19 @@ namespace CIS443Homework1___InterfaceFiles
             int error = 0;
            foreach (hw1Employee employee in employees)
             {
-                if (employee.isValid())
+                List<string> errors = employee.isValid();
+                if (errors.Count == 0)
                 {
                     writeOutput(validFileName, employee.getCalculatedRecord());
                     success++;
                 }else
                 {
-                    writeOutput(invalidFileName, employee.getRecord());
+                    string myErrors = "";
+                    foreach(string singleError in errors)
+                    {
+                        myErrors += $" ! {singleError}";
+                    }
+                    writeOutput(invalidFileName, employee.getRecord() + myErrors);
                     error++;
                 }
             }
