@@ -17,6 +17,12 @@ namespace CIS443Homework1___InterfaceFiles
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+
+            //List<hw1Employee> employees = new List<hw1Employee>();
+
+            //hw1FileIO myIO = new hw1FileIO();
+            //myIO.fillEmployees("EmployeeData", ref employees);
+            //myIO.outputEmployees($"OutPayroll{DateTime.Now.ToString("yyyyMMdd_hhmmss")}", $"OutPayrollError{DateTime.Now.ToString("yyyyMMdd_hhmmss")}", employees);
         }
     }
 }
