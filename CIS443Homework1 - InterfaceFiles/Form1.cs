@@ -33,20 +33,30 @@ namespace CIS443Homework1___InterfaceFiles
 
             List<hw1Employee> employees = new List<hw1Employee>();
             hw1FileIO myIO = new hw1FileIO();
-            myIO.fillEmployees(fxtFileName1.Text, ref employees);
-            int[] results = myIO.outputEmployees(outputFile, outputErrorFile, employees);
-            if (results[0] > 0 || results[1] > 0)
+            if (myIO.fillEmployees(fxtFileName1.Text, ref employees))
             {
-                lblSuccessCount.Text = Convert.ToString(results[0]);
-                lblSuccessFile.Text = outputFile;
-                lblErrorCount.Text = Convert.ToString(results[1]); ;
-                lblErrorFile.Text = outputErrorFile;
-            } else
+                int[] results = myIO.outputEmployees(outputFile, outputErrorFile, employees);
+                if (results[0] > 0 || results[1] > 0)
+                {
+                    lblSuccessCount.Text = Convert.ToString(results[0]);
+                    lblSuccessFile.Text = outputFile;
+                    lblErrorCount.Text = Convert.ToString(results[1]); ;
+                    lblErrorFile.Text = outputErrorFile;
+                }
+                else
+                {
+                    lblSuccessCount.Text = "0";
+                    lblSuccessFile.Text = "No Records Processed";
+                    lblErrorCount.Text = "0";
+                    lblErrorFile.Text = "No Records Processed";
+                }
+            }
+            else
             {
-                lblSuccessCount.Text = "No Records Processed";
-                lblSuccessFile.Text = "No Records Processed";
-                lblErrorCount.Text = "No Records Processed";
-                lblErrorFile.Text = "No Records Processed";
+                lblSuccessCount.Text = "0";
+                lblSuccessFile.Text = "Failed to find file";
+                lblErrorCount.Text = "0";
+                lblErrorFile.Text = "Failed to find file";
             }
         }
     }

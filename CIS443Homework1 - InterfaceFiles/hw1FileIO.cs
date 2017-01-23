@@ -17,19 +17,29 @@ namespace CIS443Homework1___InterfaceFiles
         /// </summary>
         /// <param name="FileName">is the file to be read with the data</param>
         /// <param name="employees">is the list of employees to be filled</param>
-        internal void fillEmployees(string FileName, ref List<hw1Employee> employees)
+        /// <remarks>
+        /// taken from https://msdn.microsoft.com/en-us/library/aa287535(v=vs.71).aspx
+        /// </remarks>
+        internal bool fillEmployees(string FileName, ref List<hw1Employee> employees)
         {
             string line;
-
             // Read the file and display it line by line.
-            System.IO.StreamReader file = new System.IO.StreamReader($"{FileName}.txt");
-            while ((line = file.ReadLine()) != null)
+            try
             {
-                String[] lineInfo = line.Split(',');
-                employees.Add(FillEmployee(lineInfo));
-            }
+                System.IO.StreamReader file = new System.IO.StreamReader($"{FileName}.txt");
+                while ((line = file.ReadLine()) != null)
+                {
+                    String[] lineInfo = line.Split(',');
+                    employees.Add(FillEmployee(lineInfo));
+                }
 
-            file.Close();
+                file.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
