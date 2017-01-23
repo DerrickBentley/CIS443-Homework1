@@ -1,0 +1,4 @@
+This program is intended to process uploaded employee data.
+It takes a CSV from the bin/debug folder and processes records as an employee object.
+It produces an output file of the processed employees with their wages and taxes calculated.
+It can also optionally produce an error output file of invalid employee records.
